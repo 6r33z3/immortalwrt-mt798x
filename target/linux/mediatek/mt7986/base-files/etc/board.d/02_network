@@ -42,7 +42,8 @@ mediatek_setup_interfaces()
  	tplink,tl-xdr6086)
  		ucidef_set_interfaces_lan_wan "lan1 lan2" wan
  		;;
- 	tplink,tl-xdr6088)
+ 	tplink,tl-xdr6088|\
+	tplink,tl-xtr8488)
  		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4 lan5" wan
  		;;
 	*)
@@ -96,7 +97,8 @@ mediatek_setup_macs()
 		label_mac=$lan_mac
 		;;
  	tplink,tl-xdr6086|\
- 	tplink,tl-xdr6088)
+ 	tplink,tl-xdr6088|\
+	tplink,tl-xtr8488)
 		lan_mac=$(mtd_get_mac_binary config 0x1c)
 		wan_mac=$(macaddr_add "$lan_mac" 1)
 		local b0dat="$(l1dat if2dat ra0)"
