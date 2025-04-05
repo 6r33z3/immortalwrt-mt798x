@@ -566,6 +566,16 @@ define Device/tplink_tl-xdr6088
 endef
 TARGET_DEVICES += tplink_tl-xdr6088
 
+define Device/tplink_tl-xtr8488
+    DEVICE_MODEL := TL-XTR8488
+    DEVICE_DTS := mt7986a-tl-xtr8488
+    $(call Device/tplink_tl-common)
+    DEVICE_PACKAGES += kmod-mt7915-firmware
+    ARTIFACT/preloader.bin := mt7986-bl2 spim-nand-ddr4
+    ARTIFACT/bl31-uboot.fip := mt7986-bl31-uboot tplink_tl-xtr8488
+endef
+TARGET_DEVICES += tplink_tl-xtr8488
+
 define Device/zyxel_ex5700
      DEVICE_VENDOR := Zyxel
      DEVICE_MODEL := EX5700
